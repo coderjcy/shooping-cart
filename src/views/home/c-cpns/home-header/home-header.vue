@@ -26,14 +26,14 @@ const handleFocus = () => {
 
 <style scoped lang="less">
 .header {
-  height: 54px;
+  height: 14.4vw;
   background: #7cfa72;
   display: flex;
   align-items: center;
-  padding: 0 8px;
+  padding: 0 2.1333vw;
   user-select: none;
   :deep(.el-input__wrapper) {
-    border-radius: 30px;
+    border-radius: 8vw;
   }
   :deep(.el-input__wrapper:hover) {
     box-shadow: none;
@@ -42,20 +42,20 @@ const handleFocus = () => {
     box-shadow: none;
   }
   .search-wrap {
-    height: 32px;
-    padding: 3px 0;
+    height: 8.5333vw;
+    padding: 0.8vw 0;
     display: flex;
     align-items: center;
     box-sizing: border-box;
   }
   .search {
-    line-height: 26px;
+    line-height: 6.9333vw;
     background-color: rgb(124, 250, 114);
-    border-radius: 100px;
+    border-radius: 26.6667vw;
     display: flex;
-    margin-right: -5px;
-    padding: 0 12px;
-    font-size: 13px;
+    margin-right: -1.3333vw;
+    padding: 0 3.2vw;
+    font-size: 3.4667vw;
     color: #000;
   }
 }

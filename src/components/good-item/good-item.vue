@@ -9,7 +9,7 @@
       <div style="flex: 1"></div>
       <div style="display: flex; justify-content: space-between">
         <div class="price">
-          <span style="font-size: 12px">¥</span>
+          <span style="font-size: 3.2vw">¥</span>
           {{ goodInfo.price }}
         </div>
         <div>
@@ -20,7 +20,7 @@
           ></span>
           <span
             v-if="count"
-            style="font-size: 14px; display: inline-block; margin: 0 6px"
+            style="font-size: 3.7333vw; display: inline-block; margin: 0 1.6vw"
           >
             {{ count }}
           </span>
@@ -32,10 +32,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-// import useShoppingCart from "../../store/modules/shopping-cart";
+import { ref, computed } from "vue";
 import useShoppingCart from "@/store/modules/shopping-cart";
-
 interface IProps {
   goodInfo: {
     id: number;
@@ -45,11 +43,29 @@ interface IProps {
   };
 }
 const props = defineProps<IProps>();
-const count = ref(0);
+const count = computed(() => {
+  let n = 0;
+
+  shoppingCart.goods.find((i: any) => {
+    if (i.id === props.goodInfo.id) {
+      n = i.count;
+      return true;
+    }
+  });
+  return n;
+});
 const shoppingCart = useShoppingCart();
 const goodRef = ref(null);
 const handleAddClick = (e: Event) => {
-  const target = e.target as HTMLSpanElement;
+  execAnimation(e.target as HTMLElement);
+  // count.value++;
+  shoppingCart.addGoods(props.goodInfo);
+};
+const handleReduceClick = () => {
+  // count.value--;
+  shoppingCart.reduceGoods(props.goodInfo);
+};
+const execAnimation = (target: HTMLElement) => {
   const pos = target.getBoundingClientRect();
   const l = pos.left;
   const t = pos.top;
@@ -70,42 +86,12 @@ const handleAddClick = (e: Event) => {
   divEl.addEventListener("transitionend", () => {
     divEl.remove();
   });
-  if (count.value) {
-    shoppingCart.goods.find((i) => {
-      if (i.id === props.goodInfo.id) {
-        i.count++;
-        return true;
-      }
-    });
-  } else {
-    shoppingCart.goods.push({ ...props.goodInfo, count: 1 });
-  }
-  shoppingCart.count++;
-  count.value++;
-};
-const handleReduceClick = () => {
-  count.value--;
-  if (count.value) {
-    shoppingCart.goods.find((i) => {
-      if (i.id === props.goodInfo.id) {
-        i.count--;
-      }
-    });
-  } else {
-    const i = shoppingCart.goods.findIndex((i) => {
-      if (i.id === props.goodInfo.id) {
-        i.count--;
-      }
-    });
-    shoppingCart.goods.splice(i, 1);
-  }
-  shoppingCart.count--;
 };
 </script>
 
 <style scoped lang="less">
 .good-item {
-  padding-top: 10px;
+  padding-top: 2.6667vw;
   height: 20%;
   width: 100%;
   display: flex;
@@ -115,7 +101,7 @@ const handleReduceClick = () => {
     height: 26.6667vw;
     background: red;
     position: relative;
-    border-radius: 5px;
+    border-radius: 1.3333vw;
     overflow: hidden;
     img {
       width: 100%;
@@ -132,7 +118,7 @@ const handleReduceClick = () => {
   }
   .intro {
     flex: 1;
-    padding: 10px 0 10px 10px;
+    padding: 2.6667vw 0 2.6667vw 2.6667vw;
     display: flex;
     flex-direction: column;
 
@@ -145,7 +131,7 @@ const handleReduceClick = () => {
       -webkit-box-orient: vertical;
       color: #333;
       font-size: 4vw;
-      letter-spacing: 1px;
+      letter-spacing: 0.2667vw;
       font-weight: 600;
     }
     .price {
@@ -155,8 +141,8 @@ const handleReduceClick = () => {
     .btn {
       display: inline-block;
       background-size: contain;
-      width: 20px;
-      height: 20px;
+      width: 5.3333vw;
+      height: 5.3333vw;
       cursor: pointer;
       vertical-align: middle;
     }
@@ -172,8 +158,8 @@ const handleReduceClick = () => {
 <style>
 .ani-o {
   position: fixed;
-  width: 16px;
-  height: 16px;
+  width: 4.2667vw;
+  height: 4.2667vw;
   z-index: 999;
   top: var(--pos-top);
   left: var(--pos-left);
@@ -184,12 +170,12 @@ const handleReduceClick = () => {
   width: 100%;
   height: 100%;
   color: #fff;
-  border-radius: 20px;
+  border-radius: 5.3333vw;
   background-color: #f56c6c;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  font-size: 3.2vw;
   transition: all 0.3s linear;
 }
 </style>

@@ -1,5 +1,13 @@
+@font-face {
+  font-family: "ali";
+  src: url(../fonts/ali.woff), url(../fonts/ali.tff), url(../fonts/ali.woff2);
+}
 body {
   /* 灰色字体 */
   --color-a: #858687;
+  --color-price: #ff4a26;
+  --color-placehold: #a8abb2;
   user-select: none;
+
+  /* font-family: "ali"; */
 }

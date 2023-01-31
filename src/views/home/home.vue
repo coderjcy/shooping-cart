@@ -55,6 +55,11 @@
             清空购物车
           </div>
         </div>
+        <div class="drawer-content">
+          <template v-for="good in shoppingCart.goods">
+            <GoodItemV2 :good-info="good" />
+          </template>
+        </div>
       </el-drawer>
     </div>
     <el-dialog
@@ -63,7 +68,7 @@
       align-center
       :show-close="false"
       :with-header="false"
-      custom-class="clear-dialog"
+      class="clear-dialog"
     >
       <div class="text">确认清空购物车内所有商品吗？</div>
       <template #footer>
@@ -77,13 +82,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watch } from "vue";
 import Tabs from "./c-cpns/tabs/tabs.vue";
 import { Delete } from "@element-plus/icons-vue";
 import HomeHeader from "./c-cpns/home-header/home-header.vue";
 import useShoppingCart from "@/store/modules/shopping-cart";
 import { infos, categorys } from "@/assets/js/data.json";
 import GoodItem from "@/components/good-item/good-item.vue";
+import GoodItemV2 from "@/components/good-item-v2/good-item-v2.vue";
 import { storeToRefs } from "pinia";
 import { useRouter } from "vue-router";
 const badgeRef = ref(null);
@@ -112,9 +118,11 @@ const onClearClick = () => {
 const handleClearCart = () => {
   dialog.value = false;
   drawer.value = false;
-  shoppingCart.goods = [];
-  shoppingCart.count = 0;
+  shoppingCart.clearGoods();
 };
+watch(count, (newV) => {
+  newV || (drawer.value = false);
+});
 </script>
 
 <style scoped lang="less">
@@ -125,12 +133,12 @@ const handleClearCart = () => {
 
   .content {
     background: #fff;
-    height: calc(100% - 103px);
+    height: calc(100% - 27.4667vw);
     display: flex;
     .categorys {
       width: 23.7333vw;
       height: 100%;
-      border-right: 2px solid #dcdfe6;
+      border-right: 0.5333vw solid #dcdfe6;
       overflow-y: scroll;
       .el-menu {
         border-right: none;
@@ -140,17 +148,17 @@ const handleClearCart = () => {
       flex: 1;
       height: 100%;
       overflow-y: scroll;
-      padding: 0 12px;
+      padding: 0 3.2vw;
       background-color: #fff;
     }
   }
   .footer {
     position: relative;
     z-index: 99;
-    height: 49px;
+    height: 13.0667vw;
     background-color: rgb(124, 250, 114);
     .fs {
-      margin: 0 10px;
+      margin: 0 2.6667vw;
       height: 100%;
       display: flex;
       align-items: center;
@@ -159,16 +167,16 @@ const handleClearCart = () => {
         background: url("@/assets/imgs/empty.png") no-repeat;
         background-size: contain;
         background-position: center;
-        width: 36px;
-        height: 45px;
+        width: 9.6vw;
+        height: 12vw;
       }
       .price {
-        margin-left: 10px;
+        margin-left: 2.6667vw;
 
         font-weight: 600;
         .price-i {
           font-size: 3.4667vw;
-          margin-right: 2px;
+          margin-right: 0.5333vw;
         }
         .sum {
           font-size: 5.0667vw;
@@ -176,11 +184,11 @@ const handleClearCart = () => {
       }
       .sub-btn {
         position: absolute;
-        right: 0px;
+        right: 0;
         width: 19.2vw;
-        border-radius: 30px;
+        border-radius: 8vw;
         background: #fff;
-        height: 30px;
+        height: 8vw;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -197,9 +205,9 @@ const handleClearCart = () => {
       display: flex;
       height: 9.6vw;
       line-height: 9.6vw;
-      padding: 0 12px;
+      padding: 0 3.2vw;
       justify-content: space-between;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 0.2667vw solid #ddd;
 
       .left {
         .total-info {
@@ -215,6 +223,9 @@ const handleClearCart = () => {
           margin-right: 1.6vw;
         }
       }
+    }
+    .drawer-content {
+      padding: 0 16px;
     }
   }
   .dialog-footer {
@@ -234,7 +245,7 @@ const handleClearCart = () => {
 .cart-modal {
   z-index: 33 !important;
   height: auto;
-  bottom: 49px;
+  bottom: 13.0667vw;
 }
 .clear-dialog {
   .el-dialog__header {
