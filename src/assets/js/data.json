@@ -1,0 +1,93 @@
+{
+  "categorys": [
+    "饼干糕点",
+    "泡面速食",
+    "香肠",
+    "辣条",
+    "酒类",
+    "口香糖",
+    "玩具",
+    "2元辣条",
+    "0.5辣条",
+    "花生大豆",
+    "一元小吃"
+  ],
+  "infos": [
+    {
+      "id": 1,
+      "img": "http://p0.meituan.net/600.0.80/xianfu/aee27633bd02743a7758063774d7128450219.jpg.webp",
+      "title": "喜之郎 果爽荔枝味 150g/袋",
+      "price": "310.2"
+    },
+    {
+      "id": 2,
+
+      "img": "http://p1.meituan.net/240.0.80/xianfu/611e22509ea321acd2b4dc8e42c5d11152208.jpg.webp@152w_152h",
+      "title": "喜之郎 果爽荔枝味 150g/袋",
+      "price": "8"
+    },
+    {
+      "id": 3,
+
+      "img": "http://p0.meituan.net/600.0.80/xianfu/aee27633bd02743a7758063774d7128450219.jpg.webp",
+      "title": "喜之郎 果爽荔枝味 150g/袋",
+      "price": "3"
+    },
+    {
+      "id": 4,
+
+      "img": "http://p1.meituan.net/240.0.80/xianfu/611e22509ea321acd2b4dc8e42c5d11152208.jpg.webp@152w_152h",
+      "title": "title",
+      "price": "66"
+    },
+    {
+      "id": 5,
+
+      "img": "http://p0.meituan.net/600.0.80/xianfu/aee27633bd02743a7758063774d7128450219.jpg.webp",
+      "title": "title",
+      "price": "435"
+    },
+    {
+      "id": 6,
+
+      "img": "http://p1.meituan.net/240.0.80/xianfu/611e22509ea321acd2b4dc8e42c5d11152208.jpg.webp@152w_152h",
+      "title": "title",
+      "price": "64"
+    },
+    {
+      "id": 7,
+
+      "img": "http://p0.meituan.net/600.0.80/xianfu/aee27633bd02743a7758063774d7128450219.jpg.webp",
+      "title": "title",
+      "price": "33"
+    },
+    {
+      "id": 8,
+
+      "img": "http://p1.meituan.net/240.0.80/xianfu/611e22509ea321acd2b4dc8e42c5d11152208.jpg.webp@152w_152h",
+      "title": "title",
+      "price": "10.2"
+    },
+    {
+      "id": 9,
+
+      "img": "http://p0.meituan.net/600.0.80/xianfu/aee27633bd02743a7758063774d7128450219.jpg.webp",
+      "title": "title",
+      "price": "230.2"
+    }
+  ],
+  "goods": [
+    {
+      "id": 1,
+      "img": "http://p0.meituan.net/600.0.80/xianfu/aee27633bd02743a7758063774d7128450219.jpg.webp",
+      "title": "喜之郎 果爽荔枝味 150g/袋",
+      "price": "310.2"
+    },
+    {
+      "id": 2,
+      "img": "http://p1.meituan.net/240.0.80/xianfu/611e22509ea321acd2b4dc8e42c5d11152208.jpg.webp@152w_152h",
+      "title": "喜之郎 果爽荔枝味 150g/袋",
+      "price": "310.2"
+    }
+  ]
+}
